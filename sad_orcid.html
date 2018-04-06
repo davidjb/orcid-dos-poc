@@ -443,7 +443,13 @@ and iD Display Guidelines</a></li>
 <div id="home" class="content col-md-10">
 <div class="headline col-md-offset-1">
 <h1>Uhoh, you were hijacked.  This could have been a phishing site :(</h1>
-<h2><script>document.write(`Your OAuth token, which could including asking for any permission, is ${window.location.search}`)</script></h2>
+<h2><script>
+    if (window.location.search.indexOf('error') !== -1) {
+      document.write('You still get phished even if you "Deny" access.')
+    } else {
+      document.write(`Your OAuth token, which could be for any scope, was ${window.location.search}`)
+    }
+</script></h2>
 <h1>HACK YOURSELF IN<br />
 <span class="highlight">THREE EASY STEPS</span>
 </h1>
